@@ -1,0 +1,17 @@
+
+  <th>
+  	<input class="form-control" name="id" value="{{ client?.id }}" readonly="true">
+  </th>
+  <td data-toggle="tooltip" data-placement="top" title="Double click to change value">
+  	<input class="form-control" name="firstname" [ngModel]="client?.firstname" [readonly]="firstnameReadOnly" (dblclick)="onDblClick(firstnameReadOnly, 'firstnameReadOnly')" (change)="onChange($event, 'firstnameReadOnly', 'firstname')">
+  </td>
+  <td data-toggle="tooltip" data-placement="top" title="Double click to change value">
+  	<input class="form-control" name="lastname" [ngModel]="client?.lastname" [readonly]="lastnameReadOnly" (dblclick)="onDblClick(lastnameReadOnly, 'lastnameReadOnly')" (change)="onChange($event, 'lastnameReadOnly', 'lastname')">
+  </td>
+  <td data-toggle="tooltip" data-placement="top" title="Double click to change value">
+  	<input class="form-control" name="address" [ngModel]="client?.address" [readonly]="addressReadOnly" (dblclick)="onDblClick(addressReadOnly, 'addressReadOnly')" (change)="onChange($event, 'addressReadOnly', 'address')">
+  </td>
+  <td class="text-center">
+  	<a [routerLink]="['/edit-client/' + client?.id]" class="btn btn-info"><i class="fa fa-edit"></i></a>
+  	<button class="btn btn-danger" (click)="onDelete()"><i class="fa fa-trash"></i></button>
+  </td>

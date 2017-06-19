@@ -1,0 +1,33 @@
+
+<div class="input-group" style="margin: 15px 0;">
+	<span class="input-group-addon">
+		<i class="fa fa-search"></i>
+	</span>
+	<input type="text" name="search" class="form-control" placeholder="Search for a client" [(ngModel)]="searchTerms" (keyup)="onSearch(searchTerms)">
+	<span class="input-group-btn" *ngIf="hasTerms">
+		<button class="btn btn-danger" (click)="onClear()">x</button>
+	</span>
+</div>
+
+<table class="table table-bordered table-hover" *ngIf="clients?.length > 0">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Address</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr app-tr *ngFor="let client of clients" [client]="client" (clientDeleted)="onDeleted($event)"></tr>
+	</tbody>
+</table>
+
+<div class="card" *ngIf="clients?.length == 0">
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item list-group-item-info">
+			<i class="fa fa-info" style="padding-right: 10px;"></i> No clients found.
+		</li>
+	</ul>
+</div>
